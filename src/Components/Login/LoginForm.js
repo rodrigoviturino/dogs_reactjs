@@ -12,7 +12,7 @@ const LoginForm = () => {
 
   const username = useForm();
   const password = useForm();
-  const { userLogin } = React.useContext(UserContext);
+  const { userLogin, data } = React.useContext(UserContext);
 
   // React.useEffect(() => {
   //   const token = window.localStorage.getItem('token');
@@ -58,7 +58,9 @@ const LoginForm = () => {
           onChange={(event) => setUsername(event.target.value) }
         />*/}
       </form>
-      <Link to='/login/criar'>Cadastro</Link>
+      
+        <Link to='/login/criar'>Cadastro</Link>
+      
     </section>
   )
 }

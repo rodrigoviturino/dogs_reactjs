@@ -2,11 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Header.module.css';
 import {ReactComponent as Logo} from '../Assets/dogs.svg';
-// import { UserContext } from '../UserContext';
+import { UserContext } from '../UserContext';
 
 const Header = () => {
-  // const usuario = React.useContext(UserContext);
-  // console.log(usuario);
+  const {data, userLogout} = React.useContext(UserContext);
 
   return (
     <header className={styles.header}>
@@ -14,7 +13,14 @@ const Header = () => {
         <Link className={styles.logo} to="/" aria-label="Dogs - Home">
           <Logo />
         </Link>
-        <Link className={styles.login} as to="/login">Login / Criar</Link>
+        {data && data ? (
+            <Link className={styles.login} as to="/conta">
+              Olá {data.username}
+              <button onClick={userLogout}>Sair</button>
+            </Link>
+          ) : (
+            <Link className={styles.login} as to="/login">Login / Criar</Link>
+          )}
       </nav>
     </header>
   )
